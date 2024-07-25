@@ -1,5 +1,5 @@
 from main import gett
-from main import gett2_find_user
+from main import gett2_find
 
 
 def test_method_get1():
@@ -26,14 +26,35 @@ def test_method_get4():
 # но она пустая, хотя по документации должна быть ошибка
 def test_method_get5():
     li = gett("findByStatus", '2345')
-    assert li[0] == 200, li[1]
+    assert li[0] != 200, li[1]
 
 
 def test_method_get6():
-    li = gett2_find_user('string')
+    li = gett2_find('user', 'test')
     assert li[0] == 200, li[1]
 
 
 def test_method_get7():
-    li = gett2_find_user('string1')
+    li = gett2_find('user', 'string1')
+    assert li[0] != 200, li[1]
+
+
+def test_method_get8():
+    li = gett2_find('pet', '1')
     assert li[0] == 200, li[1]
+
+
+def test_method_get9():
+    li = gett2_find('pet', '30')
+    assert li[0] == 200, li[1]
+
+
+def test_method_get10():
+    li = gett2_find('pet', '12aaaaabbb')
+    assert li[0] != 200, li[1]
+
+
+def test_method_get10():
+    li = gett2_find('pet', '111111111111111111111111111111111111111111111111111111111111111111111111111111111111'
+                                 '111111111111111111111111111111111111111111111111111111111111111')
+    assert li[0] != 200, li[1]
