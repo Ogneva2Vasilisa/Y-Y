@@ -1,7 +1,6 @@
 import sys
 import requests
 import pytest
-import argparse
 
 
 def gett(func, *status):
@@ -18,7 +17,8 @@ def gett(func, *status):
 
 def gett2_find(func,username):
     print(func, username)
-    response = requests.get('https://petstore.swagger.io/v2/user/' +func+ '/'+ username)
+    print('https://petstore.swagger.io/v2/' +func+ '/'+ username)
+    response = requests.get('https://petstore.swagger.io/v2/' +func+ '/'+ username)
     return [int(response.status_code), response.reason]
 
 
@@ -37,19 +37,8 @@ def postt():
 
 
 def main():
-    p = argparse.ArgumentParser()
-    # file system args
-    p.add_argument("-post", "--p", nargs=1, help="Rasp for your group. Args: data, id")
-    p.add_argument("-get", "--g", nargs=2, help="Rasp in auditore. Args: function, id")
-    p.add_argument("-delete", "--d", nargs=1, help="Список всех зданий")
-    p.add_argument("-put", "--a", nargs=1, help="Список всех зданий")
-    args = p.parse_args()  # массив с аргументами
-    print(args)
-    if args.g:
-        gett(args.g[0], args.g[1])
-    if args.p:
-        postt(args.p[0], '0')
-
+    li = gett("findByStatus", '[] ')
+    print(li)
 
 if __name__ == '__main__':
     main()

@@ -30,7 +30,7 @@ def test_method_get5():
 
 
 def test_method_get6():
-    li = gett2_find('user', 'test')
+    li = gett2_find('user', 'string')
     assert li[0] == 200, li[1]
 
 
@@ -45,7 +45,7 @@ def test_method_get8():
 
 
 def test_method_get9():
-    li = gett2_find('pet', '30')
+    li = gett2_find('pet', '9223372036854726638')
     assert li[0] == 200, li[1]
 
 
